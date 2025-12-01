@@ -10,6 +10,15 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
         unzip \
         make \
         wget \
+        # --- OpenGL + X11 dependencies for GLEW + GLFW ---
+        libx11-dev \
+        libxrandr-dev \
+        libxinerama-dev \
+        libxcursor-dev \
+        libxi-dev \
+        xorg-dev \
+        libgl1-mesa-dev \
+        libglu1-mesa-dev \
     && apt-get clean
 
 # Install CMake 4.0.2
