@@ -14,8 +14,10 @@
   },
   "remoteUser": "vscode",
   "runArgs": [
-      "--env=DISPLAY",
-      "--env=QT_X11_NO_MITSHM=1",
-      "--volume=/tmp/.X11-unix:/tmp/.X11-unix"
-  ]
+    "--gpus=all",
+    "--device=/dev/dri:/dev/dri",
+    "--env=DISPLAY",
+    "--env=LIBGL_ALWAYS_INDIRECT=0",
+    "--volume=/tmp/.X11-unix:/tmp/.X11-unix"
+]
 }
