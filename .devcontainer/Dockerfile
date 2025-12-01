@@ -19,13 +19,11 @@ RUN mkdir -p /usr/local \
     && chmod +x cmake-4.0.2-linux-x86_64.sh \
     && ./cmake-4.0.2-linux-x86_64.sh --skip-license
 
-# Install vcpkg
-RUN git clone https://github.com/microsoft/vcpkg.git /usr/local/vcpkg \
-    && /usr/local/vcpkg/bootstrap-vcpkg.sh -disableMetrics
-
-# Add vcpkg to PATH
-ENV VCPKG_ROOT=/usr/local/vcpkg
-ENV PATH="${VCPKG_ROOT}:${PATH}"
-
-# Default user
+# Switch to vscode temporarily for installing vcpkg
 USER vscode
+
+RUN git clone https://github.com/microsoft/vcpkg.git /home/vscode/vcpkg \
+    && /home/vscode/vcpkg/bootstrap-vcpkg.sh -disableMetrics
+
+ENV VCPKG_ROOT=/home/vscode/vcpkg
+ENV PATH="${VCPKG_ROOT}:${PATH}"
